@@ -1,0 +1,47 @@
+{
+  "name": "golden-hammer-shared",
+  "version": "0.1.0",
+  "description": "",
+  "author": "nfgCodex <nfg.codex@outlook.com>",
+  "license": "MIT",
+  "source": "./src/index.html",
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "docker-compose": "npm i --force && echo \"Running in docker-compose... You should run interactively by attaching:\n\t\tdocker exec -it `hostname` npm run dev\" && tail -f /dev/null",
+    "build": "parcel build --no-source-maps",
+    "start": "node ./app",
+    "dev": "NODE_ENV=development concurrently -r 'npm:dev-concurrently*'",
+    "dev-concurrently:mkdir": "mkdir -p dist",
+    "dev-concurrently:watch": "parcel serve",
+    "check": "tsc --noEmit"
+  },
+  "targets": {
+    "default": {
+      "distDir": "./dist",
+      "publicUrl": "."
+    }
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-konva": "^17.0.2-5",
+    "ts-debounce": "^4.0.0",
+    "use-image": "^1.0.8",
+    "usehooks-ts": "^2.1.1"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.1",
+    "@parcel/validator-typescript": "^2.0.1",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "concurrently": "^6.4.0",
+    "nodemon": "^2.0.15",
+    "parcel": "^2.0.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.2"
+  },
+  "alias": {
+    "_Shared": "./src/scripts/shared",
+    "-": "./src"
+  }
+}
