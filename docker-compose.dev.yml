@@ -9,6 +9,3 @@ services:
       # - /build/node_modules
     environment:
       - NODE_OPTIONS=--enable-source-maps --trace-warnings
-    ports:
-      - '9229:9229'
-      - '3000:1234'

@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "paths": {
-      "_Shared/*": ["./src/scripts/shared/*"],
       "-/*": ["./src/*"]
     },
+    "outDir": "./dist",
     "checkJs": true,
     "target": "ES2021",
     "module": "ES2020",
