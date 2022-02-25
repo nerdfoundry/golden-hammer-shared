@@ -1,5 +1,5 @@
-import { EventClassificationTypes } from './EventClassification';
-import { EventDataTypes } from './EventData';
+import { type EventClassificationTypes } from './EventClassification';
+import { type EventDataTypes } from './EventData';
 
 export interface Platform {
   name: 'twitch'; // | 'discord' | 'youtube'; // Platform name, maps to which services to rely on

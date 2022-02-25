@@ -1,10 +1,10 @@
-declare namespace UserChatEventData {
-  export interface EmoteMeta {
+export declare namespace UserChatEventData {
+  interface EmoteMeta {
     emoteId: string;
     uri: string;
   }
 
-  export interface MessageBuffer {
+  interface MessageBuffer {
     // TODO: Consider UTF-8/etc extraction(s)?
     type: 'word' | 'emote' | 'uri';
     content: string;
