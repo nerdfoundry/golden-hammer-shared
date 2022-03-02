@@ -10,13 +10,14 @@
     "postinstall": "npm run build",
     "clean": "rimraf ./dist",
     "docker-compose": "npm i --force && echo \"Running in docker-compose... You should run interactively by attaching:\n\t\tdocker exec -it `hostname` npm run dev\" && tail -f /dev/null",
-    "build": "concurrently -r 'npm:build:*'",
+    "build": "npm run clean && concurrently -r 'npm:build:*'",
     "build:bundle": "echo 'Skipping bundle for now...'",
     "build:types": "tsc --emitDeclarationOnly --declaration",
+    "build:timestamp": "echo \"Built: $(date)\"",
     "start": "node ./app",
     "dev": "NODE_ENV=development concurrently -r 'npm:dev-concurrently*'",
     "dev-concurrently:mkdir": "mkdir -p dist",
-    "dev-concurrently:watch": "nodemon --exec npm run build",
+    "dev-concurrently:watch": "nodemon -e tsx,ts,js,jsx,json,scss --watch ./src --exec npm run build",
     "check": "tsc --noEmit"
   },
   "dependencies": {

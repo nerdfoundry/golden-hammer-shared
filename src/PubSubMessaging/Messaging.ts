@@ -3,7 +3,7 @@ import { type EventDataTypes } from './EventData';
 
 export interface Platform {
   name: 'twitch'; // | 'discord' | 'youtube'; // Platform name, maps to which services to rely on
-  eventName: String; // Original Event Name as it was received from the platform directly
+  eventName: string; // Original Event Name as it was received from the platform directly
   eventData: any; // Original Event Data as it was received from the platform directly
 }
 
