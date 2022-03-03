@@ -2,18 +2,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Chrome",
+      "name": "Launch Demo 01 (Vanilla JS)",
       "request": "launch",
       "type": "pwa-chrome",
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}"
+      "url": "http://localhost:3000/demo01",
+      "webRoot": "${workspaceFolder}/golden-hammer-shared"
     },
     {
-      "name": "Attach to Chrome",
+      "name": "Attach to Demo 01 (Vanilla JS)",
       "port": 9222,
       "request": "attach",
       "type": "pwa-chrome",
-      "webRoot": "${workspaceFolder}"
+      "webRoot": "${workspaceFolder}/golden-hammer-shared"
     }
   ]
 }
