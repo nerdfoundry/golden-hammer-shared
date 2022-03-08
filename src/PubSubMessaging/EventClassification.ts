@@ -1,19 +1,21 @@
-export type EventClassifications =
-  | 'Administration.Ban'
-  | 'Administration.MessageRemoval'
-  | 'Administration.Timeout'
-  | 'Administration' // ! TODO Remove this
-  | 'Monetization.Subscription'
-  | 'Monetization.Tip'
-  | 'Monetization' // ! TODO Remove this
-  | 'PlatformSpecific'
-  | 'System' // ! TODO Remove this
-  | 'UserChat.Message'
-  | 'UserChat.Presence'
-  | 'UserChat'; // ! TODO Remove this
+export const EventClassifications = [
+  'Administration.Ban',
+  'Administration.MessageRemoval',
+  'Administration.Timeout',
+  'Administration', // ! TODO Remove this
+  'Monetization.Subscription',
+  'Monetization.Tip',
+  'Monetization', // ! TODO Remove this
+  'PlatformSpecific',
+  'UserChat.Message',
+  'UserChat.Presence',
+  'UserChat' // ! TODO Remove this
+] as const;
+
+export type EventClassificationsType = typeof EventClassifications[number];
 
 export interface EventClassification {
-  category: EventClassifications;
+  category: EventClassificationsType;
   subCategory: any;
 }
 
