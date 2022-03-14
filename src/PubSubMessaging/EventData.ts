@@ -37,4 +37,4 @@ export interface MonetizationEventData {
   message?: string;
 }
 
-export type EventDataTypes = AdministrationEventData | MonetizationEventData | UserChatEventData;
+export type EventDataTypes = null | AdministrationEventData | MonetizationEventData | UserChatEventData;
