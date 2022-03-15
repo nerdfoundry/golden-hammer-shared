@@ -6,6 +6,7 @@ export const EventClassifications = [
   'Monetization.Subscription',
   'Monetization.Tip',
   'Monetization', // ! TODO Remove this
+  'PlatformSpecific.undefined', // ! TODO Remove this
   'PlatformSpecific',
   'UserChat.Message',
   'UserChat.Presence',
