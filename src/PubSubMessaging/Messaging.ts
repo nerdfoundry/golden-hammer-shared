@@ -20,7 +20,7 @@ export interface NormalizedMessagingEvent {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export type TargetClassMap = {
+export type ConnectTargetCategoriesAssociation = {
   connectTarget: string;
   eventCategories: string[];
 };
@@ -32,6 +32,6 @@ export type PubSubConnectionResponse = {
   pubsub: PubSubMessagingInfo; // TODO: This could be many other types, we only support messaing for now
 };
 
-export type PubSubMessagingInfo = TargetClassMap & {
+export type PubSubMessagingInfo = ConnectTargetCategoriesAssociation & {
   platformName: Platform['name'];
 };
