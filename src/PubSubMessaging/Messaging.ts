@@ -1,4 +1,3 @@
-import { type EventClassificationTypes } from './EventClassification';
 import { type EventDataTypes } from './EventData';
 
 export interface Platform {
@@ -9,29 +8,49 @@ export interface Platform {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export interface NormalizedMessagingEvent {
+export const PossibleEventClassifications = [
+  'Administration.Ban',
+  'Administration.MessageRemoval',
+  'Administration.Timeout',
+  'Monetization.Subscription',
+  'Monetization.Tip',
+  'PlatformSpecific',
+  'UserChat.Message',
+  'UserChat.Presence'
+] as const;
+
+export type EventClassification = typeof PossibleEventClassifications[number];
+export type EventClassifications = EventClassification[];
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export type ConnectTargetClassificationsAssociation = {
+  connectTarget: string; // ChannelName, Discord URI, etc?
+  eventClassifications: EventClassifications;
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export type NormalizedMessagingEvent = {
   pubSubMsgId: string;
   timestamp: number;
   platform: Platform;
   connectTarget: string; // ChannelName, Discord URI, etc?
-  eventClassification: EventClassificationTypes;
+  eventClassification: typeof PossibleEventClassifications[number];
   eventData: EventDataTypes;
-}
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-export type ConnectTargetCategoriesAssociation = {
-  connectTarget: string;
-  eventCategories: string[];
-};
 
 export type PubSubConnectionResponse = {
   registered?: boolean;
   unregistered?: boolean;
+  error?: string;
   type: 'messaging'; //TODO: Move this into the `pubsub` property
-  pubsub: PubSubMessagingInfo; // TODO: This could be many other types, we only support messaing for now
+  pubsub: Omit<PubSubMessagingInfo, 'eventClassifications'> &
+    Partial<Pick<PubSubMessagingInfo, 'eventClassifications'>>; // TODO: This could be many other types, we only support messaing for now
 };
 
-export type PubSubMessagingInfo = ConnectTargetCategoriesAssociation & {
+export type PubSubMessagingInfo = ConnectTargetClassificationsAssociation & {
   platformName: Platform['name'];
 };
