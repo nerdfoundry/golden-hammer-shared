@@ -7,7 +7,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "postinstall": "npm run build",
+    "predev": "npm run build",
     "clean": "rimraf ./dist",
     "docker-compose": "npm i --force && echo \"Running in docker-compose... You should run interactively by attaching:\n\t\tdocker exec -it `hostname` npm run dev\" && tail -f /dev/null",
     "build": "npm run clean && concurrently -r 'npm:build:*'",
